@@ -1,0 +1,6 @@
+framework module Pods_CuteMusicPlayerUITests {
+  umbrella header "Pods-CuteMusicPlayerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

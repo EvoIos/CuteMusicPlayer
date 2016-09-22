@@ -1,0 +1,6 @@
+framework module Pods_CuteMusicPlayer {
+  umbrella header "Pods-CuteMusicPlayer-umbrella.h"
+
+  export *
+  module * { export * }
+}

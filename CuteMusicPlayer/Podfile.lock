@@ -1,0 +1,33 @@
+PODS:
+  - Alamofire (4.0.0)
+  - AlamofireObjectMapper (4.0.0):
+    - Alamofire (~> 4.0)
+    - ObjectMapper (~> 2.0)
+  - Kingfisher (3.0.1)
+  - ObjectMapper (2.0.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0.0)
+  - AlamofireObjectMapper (from `https://github.com/tristanhimmelman/AlamofireObjectMapper`, branch `swift-3`)
+  - Kingfisher (~> 3.0.1)
+  - ObjectMapper (~> 2.0.0)
+
+EXTERNAL SOURCES:
+  AlamofireObjectMapper:
+    :branch: swift-3
+    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper
+
+CHECKOUT OPTIONS:
+  AlamofireObjectMapper:
+    :commit: 4a53854950ac011e0af8def192142d97cb703f32
+    :git: https://github.com/tristanhimmelman/AlamofireObjectMapper
+
+SPEC CHECKSUMS:
+  Alamofire: fef59f00388f267e52d9b432aa5d93dc97190f14
+  AlamofireObjectMapper: 9faa3ce5a240efda1b209009a2d6e1e949227abc
+  Kingfisher: d5a491b45ea453d90a31bd2c0831d5243e73a73f
+  ObjectMapper: aed2570edabbd3c9b26c939e1cabdb6558f933e0
+
+PODFILE CHECKSUM: 121083f67b6637845055d77713d52842c21fc4a6
+
+COCOAPODS: 1.1.0.beta.2
