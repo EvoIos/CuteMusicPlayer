@@ -11,19 +11,52 @@ import Alamofire
 import ObjectMapper
 import AlamofireObjectMapper
 
-class LCHomeListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
+//MARK: - controller notification extension
+extension LCHomeListController {
+    func configureNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleNotification(noti:)), name:TabbarViewDidButtonActionNotificationName, object: nil)
+    }
+    
+    func handleNotification(noti: Notification) {
+        let userInfo = noti.userInfo
+        let status = userInfo?["status"] as! TabbarButtonType
+        tabbarTappedType = status
+        print(status)
+        self .actionWithStatus(status: status)
+    }
+    
+    func actionWithStatus(status: TabbarButtonType) {
+        switch status {
+        case TabbarButtonType.runStatusType:
+            break
+        case TabbarButtonType.nextType:
+            break
+        case TabbarButtonType.infoType:
+            let playVC = LCPlayInfoController(nibName: "LCPlayInfoController", bundle: nil)
+            playVC.transitioningDelegate = self.transitionManager
+            present(playVC, animated: true, completion: nil)
+            break
+        }
+    }
+}
+
+class LCHomeListController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIViewControllerTransitioningDelegate {
     @IBOutlet weak var tableView: UITableView!
 
     var musicItemArray: [MusicItem]?
+    var tabbarTappedType: TabbarButtonType?
+    let transitionManager = LCViewControllerTransitionManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+    
         
         self.configureTableView()
         
         let urlStr = "http://127.0.0.1:3000/cuteMusic"
         Alamofire.request(urlStr).responseArray(completionHandler: { (response: DataResponse<[MusicItem]>) in
-            
-            
             let itemArray = response.result.value
             
             if let itemArray = itemArray {
@@ -36,7 +69,7 @@ class LCHomeListController: UIViewController, UITableViewDelegate, UITableViewDa
             self.musicItemArray = itemArray
             self.tableView.reloadData()
         })
-        
+        self.configureNotification()
     }
     
     
@@ -82,16 +115,6 @@ class LCHomeListController: UIViewController, UITableViewDelegate, UITableViewDa
         super.didReceiveMemoryWarning()
         
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
+
+

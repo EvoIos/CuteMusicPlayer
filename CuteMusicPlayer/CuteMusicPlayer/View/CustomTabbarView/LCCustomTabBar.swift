@@ -8,19 +8,70 @@
 
 import UIKit
 
-
+//MARK: - 
+//MARK: -- protocol
 protocol LCCustomTabBarDelegate {
-    func didSelectViewController(tabBarView: LCCustomTabBar, atIndex index: Int)
+    func didSelectViewController(tabBarView: LCCustomTabBar, atButtonTag tag: Int)
 }
 
+//MARK: -
+//MARK: -- 发送通知
+let TabbarViewDidButtonActionNotificationName = Notification.Name(rawValue: "TabbarViewDidButtonActionNotificationName")
+//MARK: -- 接收通知，更新自身状态
+let TabbarViewReceiveNotificationName = Notification.Name(rawValue: "TabbarViewReceiveNotificationName")
+
+//MARK: -- 点击Button枚举
+enum TabbarButtonType {
+    case runStatusType,nextType,infoType
+}
+
+//MARK: 更新UI枚举
+enum TabbarUIType {
+    case runStatusUIType,songInfoType
+}
+
+
 class LCCustomTabBar: UIView {
-    var delegate: LCCustomTabBarDelegate!
+    
+    @IBOutlet weak var runStatusButton: UIButton!
+    
+    
+    var delegate: LCCustomTabBarDelegate?
     var view: UIView!
     
+    //MARK: - 
+    @IBAction func buttonTapped(_ sender: UIButton) {
+        self.delegate?.didSelectViewController(tabBarView: self, atButtonTag: sender.tag)
+        var value:TabbarButtonType?
+        
+        if sender.tag == 100 {
+            value = TabbarButtonType.runStatusType
+        } else {
+            value = TabbarButtonType.nextType
+        }
+        
+        NotificationCenter.default.post(name:  TabbarViewDidButtonActionNotificationName, object: nil, userInfo: ["status":value])
+        
+    }
+    
+    //MARK: - tap gesture
+    @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
+        print(sender.location(in: self))
+        NotificationCenter.default.post(name:  TabbarViewDidButtonActionNotificationName, object: nil, userInfo: ["status":TabbarButtonType.infoType])
+    }
+    
+    //MARK: - receive notification
+    func updateUI(noti: Notification){
+        let userInfo = noti.userInfo
+        print(userInfo)
+    }
+    
+    // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
         xibSetup()
     }
+    
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         xibSetup()
@@ -28,10 +79,9 @@ class LCCustomTabBar: UIView {
     
     func xibSetup() {
         view = loadViewFromNib()
-//        view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
         view.frame = CGRect(x: 0, y: 0, width: frame.size.width, height: frame.size.width)
         addSubview(view)
-        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateUI(noti:)), name: TabbarViewReceiveNotificationName, object: nil)
     }
     
     func loadViewFromNib() -> UIView {
@@ -43,9 +93,6 @@ class LCCustomTabBar: UIView {
         return view
     }
     
-    //MARK: - tap gesture
-    @IBAction func tapAction(_ sender: UITapGestureRecognizer) {
-        print(sender.location(in: self))
-    }
+
 
 }

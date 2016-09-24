@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0DC4ABA051E4CC1944BA1564 /* Pods_CuteMusicPlayerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF836B6F72B7D4970A2410F9 /* Pods_CuteMusicPlayerTests.framework */; };
+		4541D86E1D96A54E003E6453 /* LCViewControllerTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4541D86D1D96A54E003E6453 /* LCViewControllerTransitionManager.swift */; };
+		45BF76DD1D96476F00AD2AFC /* LCPlayInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BF76DB1D96476F00AD2AFC /* LCPlayInfoController.swift */; };
+		45BF76DE1D96476F00AD2AFC /* LCPlayInfoController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BF76DC1D96476F00AD2AFC /* LCPlayInfoController.xib */; };
 		45BFEB6F1D9433630093CD9B /* LCTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BFEB6E1D9433630093CD9B /* LCTabBarController.swift */; };
 		45BFEB731D9436230093CD9B /* LCCustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BFEB721D9436230093CD9B /* LCCustomTabBar.swift */; };
 		45BFEB751D9438100093CD9B /* LCCustomTabBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BFEB741D9438100093CD9B /* LCCustomTabBar.xib */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		1C9E5AB07E14519AA45F2B20 /* Pods_CuteMusicPlayerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CuteMusicPlayerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2842E74D09343FCE5F74BAB4 /* Pods-CuteMusicPlayerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CuteMusicPlayerUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CuteMusicPlayerUITests/Pods-CuteMusicPlayerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		4541D86D1D96A54E003E6453 /* LCViewControllerTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCViewControllerTransitionManager.swift; sourceTree = "<group>"; };
+		45BF76DB1D96476F00AD2AFC /* LCPlayInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCPlayInfoController.swift; sourceTree = "<group>"; };
+		45BF76DC1D96476F00AD2AFC /* LCPlayInfoController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCPlayInfoController.xib; sourceTree = "<group>"; };
 		45BFEB6E1D9433630093CD9B /* LCTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LCTabBarController.swift; path = ../../LCTabBarController.swift; sourceTree = "<group>"; };
 		45BFEB721D9436230093CD9B /* LCCustomTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCCustomTabBar.swift; sourceTree = "<group>"; };
 		45BFEB741D9438100093CD9B /* LCCustomTabBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LCCustomTabBar.xib; sourceTree = "<group>"; };
@@ -122,9 +128,27 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4541D86C1D96A522003E6453 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				4541D86D1D96A54E003E6453 /* LCViewControllerTransitionManager.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		45BF76DA1D96472100AD2AFC /* PlayInfoController */ = {
+			isa = PBXGroup;
+			children = (
+				45BF76DB1D96476F00AD2AFC /* LCPlayInfoController.swift */,
+				45BF76DC1D96476F00AD2AFC /* LCPlayInfoController.xib */,
+			);
+			path = PlayInfoController;
+			sourceTree = "<group>";
+		};
 		45BFEB6D1D9432AD0093CD9B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				45BF76DA1D96472100AD2AFC /* PlayInfoController */,
 				45BFEB701D9435CB0093CD9B /* CustomTabBarController */,
 				45CD094B1D8C2CFC008B6B34 /* LCHomeListController.swift */,
 				45CD094C1D8C2CFC008B6B34 /* LCHomeListController.xib */,
@@ -174,6 +198,7 @@
 		45CD09181D8C2C39008B6B34 /* CuteMusicPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				4541D86C1D96A522003E6453 /* Common */,
 				45CD09521D8C3703008B6B34 /* AppMacro.swift */,
 				45CD09191D8C2C39008B6B34 /* AppDelegate.swift */,
 				45BFEB6D1D9432AD0093CD9B /* Controller */,
@@ -371,6 +396,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				45BF76DE1D96476F00AD2AFC /* LCPlayInfoController.xib in Resources */,
 				45BFEB751D9438100093CD9B /* LCCustomTabBar.xib in Resources */,
 				45CD095A1D8CD757008B6B34 /* ListViewCell.xib in Resources */,
 				45CD09241D8C2C39008B6B34 /* LaunchScreen.storyboard in Resources */,
@@ -539,10 +565,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				45CD09531D8C3703008B6B34 /* AppMacro.swift in Sources */,
+				45BF76DD1D96476F00AD2AFC /* LCPlayInfoController.swift in Sources */,
 				45CD09551D8C3CCF008B6B34 /* WeatherResponse.swift in Sources */,
 				45CD091A1D8C2C39008B6B34 /* AppDelegate.swift in Sources */,
 				45CD09601D8CE0ED008B6B34 /* UIImage+Extension.swift in Sources */,
 				45CD094D1D8C2CFC008B6B34 /* LCHomeListController.swift in Sources */,
+				4541D86E1D96A54E003E6453 /* LCViewControllerTransitionManager.swift in Sources */,
 				45BFEB6F1D9433630093CD9B /* LCTabBarController.swift in Sources */,
 				45CD09501D8C2D82008B6B34 /* MusicItem.swift in Sources */,
 				45BFEB731D9436230093CD9B /* LCCustomTabBar.swift in Sources */,

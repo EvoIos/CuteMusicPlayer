@@ -17,7 +17,7 @@
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agk-ae-bQ6">
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hf3-S6-ddM">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item_default_img" translatesAutoresizingMaskIntoConstraints="NO" id="Hf3-S6-ddM">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="9Vt-oG-y6S"/>
                                     <constraint firstAttribute="height" constant="50" id="PN3-7b-rjb"/>
@@ -94,5 +94,6 @@
     <resources>
         <image name="download_select" width="32" height="33"/>
         <image name="download_unSelect" width="34" height="35"/>
+        <image name="item_default_img" width="50" height="50"/>
     </resources>
 </document>

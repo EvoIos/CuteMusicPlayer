@@ -12,19 +12,22 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let listViewController = LCHomeListController()
+        let listViewController = LCHomeListController(nibName: "LCHomeListController", bundle: nil)
+        
         
         let mainTabbarController = LCTabBarController()
         mainTabbarController.viewControllers = [listViewController]
         
         let navigationController = UINavigationController(rootViewController: mainTabbarController)
         navigationController.navigationBar.barTintColor = NAVBG_COLOR
+        
+//        navigationController.delegate = listViewController
         
         window?.rootViewController =  navigationController
         window?.makeKeyAndVisible()
